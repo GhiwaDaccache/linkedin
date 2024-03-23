@@ -1,0 +1,60 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    border: 0px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.app {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+}
+
+.page {
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+
+.flex {
+    display: flex;  
+}
+
+.center {
+    justify-content: center;
+    align-items: center;
+}
+
+.gap {
+    gap: 10px;
+}
+
+.column {
+    flex-direction: column;
+}
+
+.shadow {
+    box-shadow: 0 0 20px 0 #17171757;
+}
+
+.f-width {
+    width: 100%;
+}
+
+.f-height {
+    height: 100%;
+}
+
+.h-width {
+    width: 50%;
+}
+
+.h-height {
+    height: 50%;
+}
+
+
+
+
