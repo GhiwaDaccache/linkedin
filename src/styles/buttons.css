@@ -1,12 +1,22 @@
 .btn-style{
     background-color: white;
     color: #0a66c2;
-    border-color: #0a66c2;
-    border-width: 2px;
+    border: 1px solid #0a66c2;
     border-radius: 3px;
     height: 40px;
     font-weight: bold;
     cursor: pointer;
+    width: 75px;
+}
+
+.btn-fill-style{
+    background-color: #0a66c2;
+    color: white;
+    border-radius: 3px;
+    height: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 75px;
 }
 
 .input-style{
@@ -18,4 +28,6 @@
 .btn-style:hover{
     opacity: 0.8;
 }
+
+
 
