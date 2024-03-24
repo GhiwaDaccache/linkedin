@@ -1,13 +1,14 @@
 import "./style.css";
 
 // import axios from "axios";
-import {useState } from "react";
+import {useState, useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 
 
 const Authentication = () => {
     const [isLogin, setIsLogin] = useState(false);
     const navigate = useNavigate();
+    const [credentials, setCredentials] = useState({email: "", password: ""})
 
     return (
     <div className="flex page">
@@ -21,19 +22,29 @@ const Authentication = () => {
                         className="f-width input-style"
                         type="text"
                         placeholder="Email"
+                        onChange={(e) => {
+                            setCredentials({
+                              ...credentials,
+                              email: e.target.value,
+                            });
+                          }}
                     />
                     
                     <input
                         className="f-width input-style"
-                        type="password"
+                        type="text"
                         placeholder="Password"
+                        onChange={(e) => {
+                            setCredentials({
+                              ...credentials,
+                              password: e.target.value,
+                            });
+                          }}
                     />
 
                     <button className="btn-style f-width" onClick={ () => {
                         navigate("/Home")
-                    }
-
-                    }>
+                    }}>
                         Login
                     </button>
 
@@ -66,8 +77,9 @@ const Authentication = () => {
                         placeholder="Password"
                     />
 
-                    <button
-                        className="btn-style f-width">
+                    <button className="btn-style f-width" onClick={ () => {
+                        navigate("/Profile")
+                    }}>
                         Signup
                     </button>
 
