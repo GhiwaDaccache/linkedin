@@ -43,7 +43,6 @@ const Profile = () =>{
                     </div>
                     <div className="f-width h-height flex column">
                         <p>First Name</p>
-                        <p>Position</p>
                     </div>
                 </div>
 

@@ -1,10 +1,28 @@
 import "./style.css";
+import PostCard from "./components/post-card";
+import axios from "axios";
+import {useState, useEffect} from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons"; 
 import { useNavigate } from "react-router-dom";
 
 const Home = () =>{
     const navigate = useNavigate();
+    const [posts, setPosts] = useState([]);
+
+        const loadPosts = async () => {
+        const response = await axios.get("http://localhost/linkedin/Backend/get_posts.php?user_id=3");
+
+        setPosts(response.data.posts);
+        console.log(response.data.posts)
+
+        localStorage.setItem("posts", JSON.stringify(response.data));
+        };
+
+        useEffect(() => {
+        loadPosts();
+        }, []);
+
     return (
         <div className="flex column page">
             <header className="white-bg f-width flex align-center gap">
@@ -42,15 +60,13 @@ const Home = () =>{
                     </div>
                 </div>
 
-                <div className="add-post h-width white-bg flex column gap center">
-                    <p>Hanady Daccache</p> 
-                    <p>date</p>
-                    <div className="post-content">
-                        Lorem ipsum
-                    </div>
+                <div>
+                    {posts.map((post) => {
+                    return <PostCard post={post} key={post.id} />;
+                    })}
                 </div>
 
-                
+
             </section>
         </div>
     )

@@ -64,3 +64,12 @@ span{
     border-radius: 3px;
     padding: 10px;
 }
+
+.card{
+    bottom: 1px solid #cfcfcf;
+    min-height: 180px;
+    padding: 20px;
+    border-radius: 3px;
+    border: 1px solid #cfcfcf;
+    width: 677px;
+}
