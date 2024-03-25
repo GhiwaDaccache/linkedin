@@ -1,0 +1,9 @@
+.profile{
+    bottom: 1px solid #cfcfcf;
+    width: 50%;
+    min-height: 280px;
+    padding: 20px;
+    border-radius: 3px;
+    border: 1px solid #cfcfcf;
+}
+

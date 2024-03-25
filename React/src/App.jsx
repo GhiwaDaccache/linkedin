@@ -7,7 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Authentication from "./pages/Authentication";
 import Home from "./pages/Home";
 // import Jobs from "./pages/Jobs";
-// import Profile from "./pages/Profile";
+import Profile from "./pages/Profile";
 import { useEffect } from "react";
 
 const App = () => {
@@ -19,8 +19,8 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Authentication />} />
           <Route path="/home" element={<Home />} />
-          {/* <Route path="/jobs" element={<Jobs />} />
-          <Route path="/profile" element={<Profile />} /> */}
+          {/*  <Route path="/jobs" element={<Jobs />} /> */}
+         <Route path="/profile" element={<Profile />} /> 
         </Routes>
       </BrowserRouter>
     </div>

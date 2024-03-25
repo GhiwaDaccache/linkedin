@@ -29,6 +29,7 @@ const Home = () =>{
 
                 <div className="add-post h-width white-bg flex column gap center">
                     <p>Hanady Daccache</p> 
+                    <p>Position</p>
                     <div className="post-content">
                         Lorem ipsum
                     </div>
