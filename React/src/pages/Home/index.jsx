@@ -1,8 +1,10 @@
 import "./style.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons"; 
+import { useNavigate } from "react-router-dom";
 
 const Home = () =>{
+    const navigate = useNavigate();
     return (
         <div className="flex column page">
             <header className="white-bg f-width flex align-center gap">
@@ -11,10 +13,23 @@ const Home = () =>{
                     <input type="text" placeholder="Search" />
                     <div></div>
                 </div>
-                <nav>
-                    <a href="#" ><u>Home</u></a>
-                    <a href="#" className="text-white">Jobs</a>
-                    <a href="#" className="text-white">Profile</a>
+                <nav className="gap">
+                    <span onClick={ () => {
+                        navigate("/home")
+                    }}>
+                        <u>Home</u>
+                    </span> 
+
+                    <span onClick={ () =>{
+                        navigate("/Jobs")
+                    }}>Jobs
+                    </span>
+
+                    <span onClick={ () => {
+                        navigate("/Profile")
+                    }}>Profile
+                    </span>
+
                 </nav>
             </header>
 
@@ -29,7 +44,7 @@ const Home = () =>{
 
                 <div className="add-post h-width white-bg flex column gap center">
                     <p>Hanady Daccache</p> 
-                    <p>Position</p>
+                    <p>date</p>
                     <div className="post-content">
                         Lorem ipsum
                     </div>

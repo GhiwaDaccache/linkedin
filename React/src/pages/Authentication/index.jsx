@@ -1,6 +1,6 @@
 import "./style.css";
 
-// import axios from "axios";
+import axios from "axios";
 import {useState, useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -8,7 +8,8 @@ import { useNavigate } from "react-router-dom";
 const Authentication = () => {
     const [isLogin, setIsLogin] = useState(false);
     const navigate = useNavigate();
-    const [credentials, setCredentials] = useState({email: "", password: ""})
+    const [credentials, setCredentials] = useState({email: "", password: "", username: ""})
+
 
     return (
     <div className="flex page">
@@ -42,9 +43,28 @@ const Authentication = () => {
                           }}
                     />
 
-                    <button className="btn-style f-width" onClick={ () => {
-                        navigate("/Home")
-                    }}>
+                    <button className="btn-style f-width" 
+                    onClick={async () => {
+                        const formData = new FormData();
+                        formData.append('user_input', credentials.email);
+                        formData.append('password', credentials.password);
+
+                        try {
+                            const { email, password } = credentials;
+          
+                            const response = await axios.post(
+                              "http://localhost/linkedin/Backend/signin.php",
+                              formData,
+                            );
+          
+                            if (response.data.status === "logged in") {
+                              navigate("/home");
+                            }
+                          } catch (error) {
+                            console.error(error);
+                          }
+                        }}
+                    >
                         Login
                     </button>
 
@@ -77,9 +97,28 @@ const Authentication = () => {
                         placeholder="Password"
                     />
 
-                    <button className="btn-style f-width" onClick={ () => {
-                        navigate("/Profile")
-                    }}>
+                    <button className="btn-style f-width" onClick={async () => {
+                        const formData = new FormData();
+                        formData.append('username', credentials.username);
+                        formData.append('email', credentials.email);
+                        formData.append('password', credentials.password);
+
+                        try {
+                            const { email, password, username } = credentials;
+          
+                            const response = await axios.post(
+                              "http://localhost/linkedin/Backend/signup.php",
+                              formData,
+                            );
+          
+                            if (response.data.status === "success") {
+                              navigate("/Profile");
+                            }
+                          } catch (error) {
+                            console.error(error);
+                          }
+                        }}
+                    >
                         Signup
                     </button>
 
