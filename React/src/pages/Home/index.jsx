@@ -9,6 +9,8 @@ import { useNavigate } from "react-router-dom";
 const Home = () =>{
     const navigate = useNavigate();
     const [posts, setPosts] = useState([]);
+    const [postDetails, setPostDetails] = useState({description: "", title: ""});
+
 
         const loadPosts = async () => {
         const response = await axios.get("http://localhost/linkedin/Backend/get_posts.php?user_id=3");
@@ -24,6 +26,8 @@ const Home = () =>{
         }, []);
 
     return (
+        
+
         <div className="flex column page">
             <header className="white-bg f-width flex align-center gap">
                 <FontAwesomeIcon icon={faLinkedin} />
@@ -53,12 +57,48 @@ const Home = () =>{
 
             <section className="flex column gap center">
                 <div className="add-post h-width white-bg flex column center gap">
-                    <input type="text" placeholder="Write something..." />
+                    <input type="text" placeholder="Write something..." 
+                        onChange={(e) => {
+                            setPostDetails({
+                              ...postDetails,
+                              description: e.target.value,
+                              title: "post"
+                            });
+                          }}
+                    />
                     <div className="gap flex align-center">
                         <button className="btn-style">Discard</button>
-                        <button className="btn-fill-style">Post</button>
+                        
+                        <button className="btn-fill-style" onClick={async () => {
+
+                            
+                            try {
+                            
+                            const formData = new FormData();
+                            formData.append('description', postDetails.description);
+                            formData.append('title', postDetails.title);
+                            formData.append('date', new Date());
+                            formData.append('user_id', JSON.parse(localStorage.getItem("user_id"))); 
+                            // formData.append('company_id', JSON.parse(localStorage.getItem("company_id"))); 
+                            
+
+                            const response = await axios.post(
+                                "http://localhost/linkedin/Backend/add_post.php",
+                                formData
+                            );
+
+                            console.log(response.data);
+
+                            if (response.data.status === "success") {
+                                alert("Post succesfully added");
+                            }
+                            } catch (error) {
+                            console.error(error);
+                            }
+                        }}
+                    >Post</button>
+                        </div>
                     </div>
-                </div>
 
                 <div>
                     {posts.map((post) => {

@@ -58,6 +58,7 @@ const Authentication = () => {
                             );
           
                             if (response.data.status === "logged in") {
+                              localStorage.setItem("user_id", JSON.stringify(response.data.user_id));
                               navigate("/home");
                             }
                           } catch (error) {
@@ -112,6 +113,7 @@ const Authentication = () => {
                             );
           
                             if (response.data.status === "success") {
+                              localStorage.setItem("user_id", JSON.stringify(response.data.user_id));
                               navigate("/Profile");
                             }
                           } catch (error) {
