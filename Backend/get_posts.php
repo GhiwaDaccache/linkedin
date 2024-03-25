@@ -4,7 +4,7 @@ include('connection.php');
 $user_id = $_GET['user_id'];
 
 $load_posts = $mysqli->prepare(
-'select p.description, p.title, p.date, users.name, companies.name
+'select p.id, p.description, p.title, p.date, users.name, companies.name
 from posts p
 left join user_followers u on u.following_id=p.user_id
 left join compa_followers c on c.company_id=p.company_id
@@ -20,10 +20,11 @@ $load_posts->store_result();
 $num_rows = $load_posts->num_rows();
 
 $posts = [];
-$load_posts->bind_result($description, $title, $date, $user_name, $company_name);
+$load_posts->bind_result($id, $description, $title, $date, $user_name, $company_name);
 
 while ($load_posts->fetch()) {
     $post = [
+        'id' => $id,
         'description' => $description,
         'title' => $title,
         'date' => $date,
