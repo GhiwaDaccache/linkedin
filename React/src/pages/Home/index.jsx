@@ -13,7 +13,8 @@ const Home = () =>{
 
 
         const loadPosts = async () => {
-        const response = await axios.get("http://localhost/linkedin/Backend/get_posts.php?user_id=3");
+        let user_id = JSON.parse(localStorage.getItem("user_id"));
+        const response = await axios.get(`http://localhost/linkedin/Backend/get_posts.php?user_id=${user_id}`);
 
         setPosts(response.data.posts);
         console.log(response.data.posts)
