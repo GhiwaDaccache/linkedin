@@ -33,7 +33,7 @@ const Authentication = () => {
                     
                     <input
                         className="f-width input-style"
-                        type="text"
+                        type="password"
                         placeholder="Password"
                         onChange={(e) => {
                             setCredentials({
