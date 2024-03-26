@@ -17,7 +17,6 @@ const Home = () =>{
         const response = await axios.get(`http://localhost/linkedin/Backend/get_posts.php?user_id=${user_id}`);
 
         setPosts(response.data.posts);
-        console.log(response.data.posts)
 
         localStorage.setItem("posts", JSON.stringify(response.data));
         };
@@ -88,7 +87,6 @@ const Home = () =>{
                                 formData
                             );
 
-                            console.log(response.data);
 
                             if (response.data.status === "success") {
                                 alert("Post succesfully added");
