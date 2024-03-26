@@ -3,12 +3,12 @@ import axios from "axios";
 
 
 const JobCard = ({ job }) => {
-  const {description, company_name, date, id} = job;
+  const {description, name, date, id} = job;
 
   return (
     <div className="flex column gap center">
       <div className="white-bg flex column gap center card">
-          <p>{company_name}</p>
+          <p>{name}</p>
           <p>{date}</p>
           <div className="post-content">
               {description}
